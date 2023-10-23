@@ -56,6 +56,16 @@ export default function Cadastro(props){
         >
             <Text>Cadastrar</Text>
             </TouchableOpacity>
+
+        <TouchableOpacity
+            onPress={() => props.navigation.navigate("Cadastro")}
+        >
+            <View style={{
+            innerHeight:"40px",
+            }}>
+            <Text style={{color:"black"}}>Cancelar</Text>
+            </View>
+        </TouchableOpacity>
         </View>
     );
 }

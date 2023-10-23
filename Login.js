@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 
 
 export function Login(props){
@@ -26,7 +26,17 @@ export function Login(props){
             >
             <Text>Login</Text>
             </TouchableOpacity>
-            
+
+            <TouchableOpacity
+             onPress={() => props.navigation.navigate("Cadastro")}
+            >
+                <View style={{
+                innerHeight:"40px",
+                }}>
+                <Text style={{color:"black"}}>Cadastrar</Text>
+                </View>
+            </TouchableOpacity>
+                    
         </View>
         
     );
