@@ -1,9 +1,31 @@
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, Image, Switch, } from "react-native";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UtilsContext } from "./Contex";
 
 export default function Cadastro(props){
 
+    const {utils, setUtils} = useContext(UtilsContext)
+
     const [inicio, setInicio] = useState(false)
+    
+
+    const [nome, setNome] = useState("");
+    const [idade, setIdade] = useState("");
+    const [sexo, setSexo] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const [senha2, setSenha2] = useState("");
+    const [notificacao, setNotificacao] = Boolean(false);
+
+
+
+    function goToLogin(){
+        if(senha == senha2)
+        {
+            setUtils({...utils, nome: nome, idade: idade, sexo: sexo, email: email, senha: senha })
+            props.navigation.navigate("Login")
+        }    
+    }
   
 
     return(
@@ -16,22 +38,40 @@ export default function Cadastro(props){
         />
 
         <Text style={styles.margem}>Nome:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setNome(e)}
+            value = {nome}
+            style={styles.textArea}/>
 
         <Text style={styles.margem}>Idade:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setIdade(e)}
+            value = {idade}
+            style={styles.textArea}/>
         
         <Text style={styles.margem}>Sexo:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setSexo(e)}
+            value = {sexo}
+            style={styles.textArea}/>
 
         <Text style={styles.margem}>Email:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setEmail(e)}
+            value = {email}
+            style={styles.textArea}/>
 
         <Text style={styles.margem}>Senha:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setSenha(e)}
+            value = {senha}
+            style={styles.textArea}/>
 
         <Text style={styles.margem2}>Confirmar senha:</Text>
-        <TextInput style={styles.textArea}/>
+        <TextInput
+            onChangeText= {e => setSenha2(e)}
+            value = {senha2}
+            style={styles.textArea}/>
 
         <Text style={styles.margem4}>Deseja receber notificações?</Text>
 
@@ -52,7 +92,7 @@ export default function Cadastro(props){
                 borderRadius: '5px',
                 marginTop: '10px'
                 }}
-                onPress={() => props.navigation.navigate("Login")}
+                onPress={() => goToLogin()}
         >
             <Text>Cadastrar</Text>
             </TouchableOpacity>

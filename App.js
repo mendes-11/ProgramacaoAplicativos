@@ -4,16 +4,24 @@ import { Login } from './Login';
 import Cadastro from './Cadastro';
 import Usuario from './Usuario';
 
+import { UtilsContext } from "./Contex";
+import { useState } from "react";
+
 export default function App() {
+
+  const [utils, setUtils] = useState({});
+
   const Stack = createStackNavigator()
 
   return(
   <NavigationContainer>
-  <Stack.Navigator>
-    <Stack.Screen name="Cadastro" component = {Cadastro} />
-    <Stack.Screen name="Login" component = {Login} />
-    <Stack.Screen name="Usuario" component = {Usuario} />
-  </Stack.Navigator>
+    <UtilsContext.Provider value={{ utils, setUtils }}>
+      <Stack.Navigator>
+        <Stack.Screen name="Cadastro" component = {Cadastro} />
+        <Stack.Screen name="Login" component = {Login} />
+        <Stack.Screen name="Usuario" component = {Usuario} />
+      </Stack.Navigator>
+    </UtilsContext.Provider>
 </NavigationContainer>
 
 );

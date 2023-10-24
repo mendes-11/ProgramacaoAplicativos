@@ -1,16 +1,23 @@
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, Image, Switch, } from "react-native";
+import { useState, useContext } from "react";
+import { UtilsContext } from "./Contex";
+
 
 export default function Usuario(){
+
+    const {utils, setContext} = useContext(UtilsContext)
+
+
     return(
         <View style={styles.container}>
             <Text style={styles.usuario}>Usuarios</Text>
 
             <Text style={styles.card}>
-                Nome:
+                Nome: {utils.nome}
                 {"\n"}
-                Idade:
+                Idade: {utils.idade}
                 {"\n"}
-                Sexo:
+                Sexo: {utils.sexo}
                 {"\n"}
                 Recebe notificação:
             </Text>
