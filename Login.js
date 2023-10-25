@@ -1,18 +1,39 @@
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
-
+import { useState, useContext } from "react";
+import { UtilsContext } from "./Contex";
 
 export function Login(props){
+
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const {utils, setContext} = useContext(UtilsContext)
+
+
+    function goToUsuario(){
+
+        if(email == utils.email && senha == utils.senha)
+        {
+            props.navigation.navigate("Usuario")
+        }    
+    }
+
     return(
         <View style={styles.container}>
 
-            <Text style={styles.login}>Login</Text>
+            <Text style={styles.login} >Login</Text>
 
             <Text style={styles.margem}>Email:</Text>
-
-            <TextInput style={styles.textArea}/>
+            <TextInput
+                onChangeText= {e => setEmail(e)}
+                value = {email}
+                style={styles.textArea}/>
 
             <Text style={styles.margem}>Senha:</Text>
-            <TextInput style={styles.textArea}/>
+            <TextInput
+                onChangeText= {e => setSenha(e)}
+                value = {senha}
+                style={styles.textArea}/>
 
             <TouchableOpacity
                 style={{
@@ -22,7 +43,7 @@ export function Login(props){
                 borderRadius: '5px',
                 marginTop: '10px'
                 }}
-                onPress={() => props.navigation.navigate("Usuario")}
+                onPress={() => goToUsuario()}
             >
             <Text>Login</Text>
             </TouchableOpacity>

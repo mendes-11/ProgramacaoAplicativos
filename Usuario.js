@@ -19,7 +19,7 @@ export default function Usuario(){
                 {"\n"}
                 Sexo: {utils.sexo}
                 {"\n"}
-                Recebe notificação:
+                Recebe notificação: {utils.inicio}
             </Text>
         </View>
     );

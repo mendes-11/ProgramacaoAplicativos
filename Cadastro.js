@@ -15,14 +15,15 @@ export default function Cadastro(props){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [senha2, setSenha2] = useState("");
-    const [notificacao, setNotificacao] = Boolean(false);
+
 
 
 
     function goToLogin(){
         if(senha == senha2)
         {
-            setUtils({...utils, nome: nome, idade: idade, sexo: sexo, email: email, senha: senha })
+            const inicioValue = inicio ? 'sim' : 'não';
+            setUtils({...utils, nome: nome, idade: idade, sexo: sexo, email: email, senha: senha, inicio: inicioValue })
             props.navigation.navigate("Login")
         }    
     }
