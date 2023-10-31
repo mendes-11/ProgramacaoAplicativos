@@ -11,18 +11,46 @@ export default function Usuario(){
     return(
         <View style={styles.container}>
             <Text style={styles.usuario}>Usuarios</Text>
+            {container(utils)}
 
-            <Text style={styles.card}>
-                Nome: {utils.nome}
-                {"\n"}
-                Idade: {utils.idade}
-                {"\n"}
-                Sexo: {utils.sexo}
-                {"\n"}
-                Recebe notificação: {utils.inicio}
-            </Text>
         </View>
+
     );
+}
+
+
+function container(props){
+    return(
+        <Text style={styles.card}>
+            Nome: {props.nome}
+            {"\n"}
+            Idade: {props.idade}
+            {"\n"}
+            Sexo: {props.sexo}
+            {"\n"}
+            Recebe notificação: {props.inicio}
+            {"\n"}
+
+
+            <TouchableOpacity
+                style={{
+                    innerHeight:"10px",
+                    padding: '10px',
+                    backgroundColor:"#FF0000",
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                    marginLeft: '280px'
+                    }}
+                    onPress={() => deletar()}
+            >
+                <Text>Deletar</Text>
+            </TouchableOpacity>
+        </Text>
+    )
+}
+
+function deletar(){
+
 }
 
 const styles = StyleSheet.create({
@@ -39,7 +67,7 @@ const styles = StyleSheet.create({
        border: "solid 2px black",
        borderRadius: "5px",
        width: "350px",
-       height: "90px"
+       height: "130px",
+       marginTop: "10px"
       },
 })
-
