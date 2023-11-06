@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { UtilsContext } from "./Contex";
 
 
-export default function Usuario(){
+export default function Usuario(props){
 
     const {utils, setContext} = useContext(UtilsContext)
 
@@ -11,14 +11,31 @@ export default function Usuario(){
     return(
         <View style={styles.container}>
             <Text style={styles.usuario}>Usuarios</Text>
+
+            
             {container(utils)}
+            <TouchableOpacity
+                style={{
+                    innerHeight:"10px",
+                    padding: '10px',
+                    backgroundColor:"#FF0000",
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                    marginLeft: '280px'
+                    }}
+                    onPress={() => props.navigation.navigate("Cadastro")}
+            >
+                <Text>Deletar</Text>
+            </TouchableOpacity>
+
+
 
         </View>
 
     );
 }
 
-
+//Componentização
 function container(props){
     return(
         <Text style={styles.card}>
@@ -32,26 +49,17 @@ function container(props){
             {"\n"}
 
 
-            <TouchableOpacity
-                style={{
-                    innerHeight:"10px",
-                    padding: '10px',
-                    backgroundColor:"#FF0000",
-                    borderRadius: '5px',
-                    marginTop: '10px',
-                    marginLeft: '280px'
-                    }}
-                    onPress={() => deletar()}
-            >
-                <Text>Deletar</Text>
-            </TouchableOpacity>
+
+            
         </Text>
     )
 }
 
 function deletar(){
+    utils.nome = "mendes"
 
 }
+
 
 const styles = StyleSheet.create({
     container: {

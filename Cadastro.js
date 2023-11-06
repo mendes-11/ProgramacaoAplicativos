@@ -15,17 +15,33 @@ export default function Cadastro(props){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [senha2, setSenha2] = useState("");
+    const [id, setId] = useState(1);
+    const [inicioValue, setinicioValue] = useState("");
 
 
 
+    function cadastrar(){
 
-    function goToLogin(){
-        if(senha == senha2)
-        {
-            const inicioValue = inicio ? 'sim' : 'não';
-            setUtils({...utils, nome: nome, idade: idade, sexo: sexo, email: email, senha: senha, inicio: inicioValue })
-            props.navigation.navigate("Login")
-        }    
+        // if(senha == senha2)
+        // {
+
+            if(utils.nome && utils.idade && utils.sexo && utils.id)
+            {
+                const inicioValue = inicio ? 'sim' : 'não';
+                // setUtils({...utils, nome: [...utils.nome, nome], idade: [...utils.idade, idade], sexo: [...utils.sexo, sexo], email: [...utils.email, email], senha: [...utils.senha, senha], inicio: [...utils.inicioValue, inicioValue], id: [...utils, id]  })
+                setUtils({...utils, nome: [...utils.nome, nome], idade: [...utils.idade, idade], sexo: [...utils.sexo, sexo], email: [...utils.email, email], senha: [...utils.senha, senha], inicio: inicioValue, id: [...utils, id]  });
+
+                setId(id + 1);
+                props.navigation.navigate("Login")
+            }
+            else
+            {
+                const inicioValue = inicio ? 'sim' : 'não';
+                setUtils({...utils, nome: nome, idade: idade, sexo: sexo, email: email, senha: senha, inicio: inicioValue, id: id })
+                setId(id + 1);
+                props.navigation.navigate("Usuario")
+            // }    
+        }
     }
   
 
@@ -93,18 +109,18 @@ export default function Cadastro(props){
                 borderRadius: '5px',
                 marginTop: '10px'
                 }}
-                onPress={() => goToLogin()}
+                onPress={() => cadastrar()}
         >
             <Text>Cadastrar</Text>
             </TouchableOpacity>
 
         <TouchableOpacity
-            onPress={() => props.navigation.navigate("Cadastro")}
+            onPress={() => props.navigation.navigate("Login")}
         >
             <View style={{
             innerHeight:"40px",
             }}>
-            <Text style={{color:"black"}}>Cancelar</Text>
+            <Text style={{color:"black"}}>Login</Text>
             </View>
         </TouchableOpacity>
         </View>

@@ -18,8 +18,8 @@ export default function App() {
     <UtilsContext.Provider value={{ utils, setUtils }}>
       <Stack.Navigator>
         <Stack.Screen name="Cadastro" component = {Cadastro} />
-        <Stack.Screen name="Login" component = {Login} />
         <Stack.Screen name="Usuario" component = {Usuario} />
+        <Stack.Screen name="Login" component = {Login} />
       </Stack.Navigator>
     </UtilsContext.Provider>
 </NavigationContainer>
