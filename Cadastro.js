@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useState, useContext } from "react";
 import { UtilsContext } from "./Contex";
+import axios from 'axios';
 
 export default function Cadastro(props) {
   const { utils, setUtils } = useContext(UtilsContext);
@@ -64,6 +65,19 @@ export default function Cadastro(props) {
       props.navigation.navigate("Login");
     }
   }
+
+
+
+  const dados = async (name, age) => {
+
+      try {
+        const response = await axios.post("http://localhost:8080/user", {name, age});
+  
+        console.log('Resposta da API:', response);
+      } catch (error) {
+        console.error('Erro no post:', error);
+      }
+    }
 
   return (
     <View style={styles.container}>
@@ -135,7 +149,7 @@ export default function Cadastro(props) {
           borderRadius: "5px",
           marginTop: "10px",
         }}
-        onPress={() => cadastrar()}
+        onPress={() => dados(nome, idade)}
       >
         <Text>Cadastrar</Text>
       </TouchableOpacity>
